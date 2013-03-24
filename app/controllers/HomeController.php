@@ -2,6 +2,8 @@
 
 class HomeController extends BaseController {
 
+	public $layout = 'layouts.default';
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -17,7 +19,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		$this->layout->content = View::make('hello');
 	}
 
 }
