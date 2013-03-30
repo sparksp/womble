@@ -39,9 +39,9 @@ return array(
 	"ip"              => "The :attribute must be a valid IP address.",
 	"match"           => "The :attribute format is invalid.",
 	"max"             => array(
-		"numeric"     => "The :attribute must be less than :max.",
-		"file"        => "The :attribute must be less than :max kilobytes.",
-		"string"      => "The :attribute must be less than :max characters.",
+		"numeric"     => "The :attribute may not be greater than :max.",
+		"file"        => "The :attribute may not be greater than :max kilobytes.",
+		"string"      => "The :attribute may not be greater than :max characters.",
 	),
 	"mimes"           => "The :attribute must be a file of type: :values.",
 	"min"             => array(
@@ -49,8 +49,9 @@ return array(
 		"file"        => "The :attribute must be at least :min kilobytes.",
 		"string"      => "The :attribute must be at least :min characters.",
 	),
-	"notin"           => "The selected :attribute is invalid.",
+	"not_in"           => "The selected :attribute is invalid.",
 	"numeric"         => "The :attribute must be a number.",
+	"regex"           => "The :attribute format is invalid.",
 	"required"        => "The :attribute field is required.",
 	"required_with"   => "The :attribute field is required when :values is present.",
 	"same"            => "The :attribute and :other must match.",
