@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\MessageBag;
 
 class GroupController extends BaseController {
 
@@ -25,6 +26,28 @@ class GroupController extends BaseController {
 		$group = $form->createGroup();
 
 		return Redirect::action('GroupController@show', [ $group->id, $group->hash ]);
+	}
+
+	public function find()
+	{
+		$email = Input::get('contact_email');
+		$hash  = Input::get('hash');
+
+		$group = Group::where('contact_email', $email)->where('hash', $hash)->first();
+
+		if (!$group) {
+			$errors = new MessageBag;
+			$errors->add('contact_email', 'No group found with these details');
+
+			return Redirect::action('GroupController@search')->withErrors($errors)->withInput(Input::except('hash'));
+		}
+
+		return Redirect::action('GroupController@show', [$group->id, $group->hash]);
+	}
+
+	public function search()
+	{
+		$this->layout->content = View::make('group.search');
 	}
 
 	public function show($group, $hash = '')

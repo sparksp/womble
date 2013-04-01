@@ -10,8 +10,8 @@
 	<div class="offset1 span4">
 		<label for="inputGroupContactEmail"><h2>Already registered?</h2></label>
 
-		{{ Form::open(['action' => 'GroupController@find'], 'get') }}
-		{{ Form::email('email', null, ['placeholder' => 'Group Contact Email', 'id' => 'inputGroupContactEmail', 'class' => 'span4', 'required']) }}
+		{{ Form::open(['action' => 'GroupController@find']) }}
+		{{ Form::email('contact_email', null, ['placeholder' => 'Group Contact Email', 'id' => 'inputGroupContactEmail', 'class' => 'span4', 'required']) }}
 		<div class="row">
 			<span class="span3">{{ Form::password('hash', ['placeholder' => 'Group Code', 'class' => 'input-block-level', 'required']) }}</span>
 			<span class="span1"><button class="btn btn-primary">Login</button></span>
