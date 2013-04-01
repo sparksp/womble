@@ -17,7 +17,10 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$this->layout->content = View::make('hello');
+		$activities = Activity::where('sat_total', '>', '0')->get();
+		$activity_list = View::make('activity.table', compact('activities'));
+
+		$this->layout->content = View::make('welcome', compact('activity_list'));
 	}
 
 }
