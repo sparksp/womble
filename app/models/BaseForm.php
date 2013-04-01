@@ -28,9 +28,15 @@ class BaseForm {
 		$this->data = $data;
 	}
 
+	protected function beforeValidator()
+	{
+		;
+	}
+
 	public function validator()
 	{
 		if (is_null($this->validator)) {
+			$this->beforeValidator();
 			$this->validator = Validator::make($this->data, $this->rules);
 		}
 		return $this->validator;

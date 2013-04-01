@@ -39,9 +39,9 @@
 			<td class="control-group {{ $errors->first('name', 'error') }}">
 				{{ Form::text('name', null, [ 'placeholder' => 'Full Name', 'maxlength' => 50, 'required', 'autofocus' ] ) . $errors->first('name') }}</td>
 			<td class="control-group {{ $errors->first('sat_activity_id', 'error') }}">
-				{{ Form::select('sat_activity_id', [null => 'Choose an activity'] + $sat_activities, null, [ 'required' ]) . $errors->first('sat_activity_id') }}</td>
+				{{ Form::select('sat_activity_id', ['' => 'Choose an activity'] + $sat_activities, null, [ 'required' ]) . $errors->first('sat_activity_id') }}</td>
 			<td class="control-group {{ $errors->first('sun_activity_id', 'error') }}">
-				{{ Form::select('sun_activity_id', [null => 'Choose an activity'] + $sun_activities, null, [ 'required' ]) . $errors->first('sun_activity_id') }}</td>
+				{{ Form::select('sun_activity_id', ['' => 'Choose an activity'] + $sun_activities, null, [ 'required' ]) . $errors->first('sun_activity_id') }}</td>
 			<td><button class="btn btn-primary" title="Add attendee"><i class="icon-plus icon-white"></i></button></td>
 		</tr>
 	{{ Form::close() }}

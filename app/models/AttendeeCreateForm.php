@@ -4,9 +4,24 @@ class AttendeeCreateForm extends BaseForm {
 
 	public $rules = [
 		'name' => ['required', 'max:50'],
-		'sat_activity_id' => ['required', 'exists:activities,id'],
-		'sun_activity_id' => ['required', 'exists:activities,id'],
+		'sat_activity_id' => ['required', 'exists:activities,id', 'spaces:activities,sat'],
+		'sun_activity_id' => ['required', 'exists:activities,id', 'spaces:activities,sun'],
 	];
+
+	protected function beforeValidator()
+	{
+		Validator::extend('spaces', function($attribute, $value, $parameters)
+		{
+			$activity = Activity::find($value);
+			$total = $parameters[1].'_total';
+			$avail = $parameters[1].'_avail';
+
+			if ($activity->$total == -1) return true;
+			if ($activity->$avail > 0) return true;
+
+			return false;
+		});
+	}
 
 	public function createAttendee(Group $group)
 	{
@@ -53,6 +68,9 @@ class AttendeeCreateForm extends BaseForm {
 			}
 			else if ($activity->$avail > 0 or $activity->id == $current) {
 				$label = $activity->name . ' ('. Lang::choice('messages.spaces', $activity->$avail, ['count' => $activity->$avail]) .')';
+			}
+			else {
+				continue; // Skip!
 			}
 			$options[$activity->id] = $label;
 		}
