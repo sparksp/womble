@@ -116,6 +116,14 @@ class AttendeeController extends BaseController {
 
 		$attendee->delete();
 
+		$activities = [
+			'sat_activity_id' => 'sat_used',
+			'sun_activity_id' => 'sun_used',
+		];
+		foreach ($activities as $activity_id => $used) {
+			Activity::where('id', $attendee->$activity_id)->decrement($used);
+		}
+
 		return Redirect::action('GroupController@show', [$group->id, $hash]);
 	}
 
