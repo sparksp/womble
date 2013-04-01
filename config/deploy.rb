@@ -57,6 +57,11 @@ task :create_symlinks, :roles => :web do
 	run commands.join(' && ') if commands.any?
 end
 
+task :migrate_db, :roles => :web do
+	run "/usr/local/php54/bin/php #{current_release}/artisan migrate"
+end
+
 after 'deploy:update', 'deploy:cleanup'
 after 'deploy:finalize_update', :composer_install
 after 'deploy:finalize_update', :create_symlinks
+after :create_symlinks, :migrate_db
