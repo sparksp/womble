@@ -36,7 +36,7 @@ end
 
 # Fetch vendor packages
 task :composer_install, :roles => :web do
-	run "/usr/local/php53/bin/php ~/bin/composer.phar install -d #{current_release} -n -q -o --no-progress"
+	run "/usr/local/php54/bin/php ~/bin/composer.phar install -d #{current_release} -n -q -o --no-progress"
 end
 
 # Link up the shared children
