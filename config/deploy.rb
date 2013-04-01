@@ -13,6 +13,7 @@ set :deploy_via,      :remote_cache
 set :keep_releases,   3
 set :use_sudo,        false
 set :shared_children, %w( config storage storage/cache storage/logs storage/meta storage/sessions storage/views )
+set :group_writable,  false
 
 default_run_options[:pty] = true
 
@@ -46,11 +47,6 @@ task :create_symlinks, :roles => :web do
 	run "[ -e #{shared_path}/htaccess ] && rm -rf #{current_release}/public/.htaccess && cp #{shared_path}/htaccess #{current_release}/public/.htaccess"
 end
 
-task :fix_perms, :roles => :web do
-	run "chmod -R g-w #{current_release}"
-end
-
 after 'deploy:update', 'deploy:cleanup'
 after 'deploy:finalize_update', :composer_install
 after 'deploy:finalize_update', :create_symlinks
-after 'deploy:finalize_update', :fix_perms
