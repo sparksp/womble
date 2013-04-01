@@ -42,9 +42,19 @@ end
 
 # Link up the shared children
 task :create_symlinks, :roles => :web do
-	run "rm -rf #{current_release}/app/storage && ln -s #{shared_path}/storage #{current_release}/app/storage"
-	run "rm -rf #{current_release}/app/config/#{stage} && ln -s #{shared_path}/config #{current_release}/app/config/#{stage}"
-	run "[ -e #{shared_path}/htaccess ] && rm -rf #{current_release}/public/.htaccess && cp #{shared_path}/htaccess #{current_release}/public/.htaccess"
+	commands = []
+
+	commands << "rm -rf #{current_release}/app/storage"
+	commands << "ln -s #{shared_path}/storage #{current_release}/app/storage"
+
+	commands << "rm -rf #{current_release}/app/config/#{stage}"
+	commands << "ln -s #{shared_path}/config #{current_release}/app/config/#{stage}"
+
+	commands << "[ -e #{shared_path}/htaccess ]"
+	commands << "rm -rf #{current_release}/public/.htaccess"
+	commands << "cp #{shared_path}/htaccess #{current_release}/public/.htaccess"
+
+	run commands.join(' && ') if commands.any?
 end
 
 after 'deploy:update', 'deploy:cleanup'
