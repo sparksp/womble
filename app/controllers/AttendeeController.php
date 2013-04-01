@@ -72,6 +72,8 @@ class AttendeeController extends BaseController {
 		$attendee->groupMatches($group);
 		
 		$form = new AttendeeCreateForm;
+		$form->attendee = $attendee;
+
 		$sat_activities = $form->activities('sat', $attendee->sat_activity_id);
 		$sun_activities = $form->activities('sun', $attendee->sun_activity_id);
 
@@ -90,6 +92,7 @@ class AttendeeController extends BaseController {
 		$attendee->groupMatches($group);
 
 		$form = new AttendeeCreateForm;
+		$form->attendee = $attendee;
 
 		if ($form->invalid()) {
 			return Redirect::action('AttendeeController@edit', [$group->id, $hash, $attendee->id])->withErrors($form->validator())->withInput();

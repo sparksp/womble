@@ -2,16 +2,20 @@
 
 class AttendeeCreateForm extends BaseForm {
 
+	public $attendee = null;
+
 	public $rules = [
 		'name' => ['required', 'max:50'],
-		'sat_activity_id' => ['required', 'exists:activities,id', 'spaces:activities,sat'],
-		'sun_activity_id' => ['required', 'exists:activities,id', 'spaces:activities,sun'],
+		'sat_activity_id' => ['required', 'exists:activities,id'],
+		'sun_activity_id' => ['required', 'exists:activities,id'],
 	];
 
 	protected function beforeValidator()
 	{
 		Validator::extend('spaces', function($attribute, $value, $parameters)
 		{
+			if ($parameters[2] == $value) return true;
+
 			$activity = Activity::find($value);
 			$total = $parameters[1].'_total';
 			$avail = $parameters[1].'_avail';
@@ -21,6 +25,9 @@ class AttendeeCreateForm extends BaseForm {
 
 			return false;
 		});
+
+		$this->rules['sat_activity_id'][] = 'spaces:activities,sat,'.(is_null($this->attendee) ? 0 : $this->attendee->sat_activity_id);
+		$this->rules['sun_activity_id'][] = 'spaces:activities,sun,'.(is_null($this->attendee) ? 0 : $this->attendee->sun_activity_id);
 	}
 
 	public function createAttendee(Group $group)
