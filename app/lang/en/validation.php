@@ -74,7 +74,10 @@ return array(
 	|
 	*/
 
-	'custom' => array(),
+	'custom' => array(
+		'sat_activity_id' => ['required' => 'Select a :attribute.'],
+		'sun_activity_id' => ['required' => 'Select a :attribute.'],
+	),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -87,6 +90,9 @@ return array(
 	|
 	*/
 
-	'attributes' => array(),
+	'attributes' => array(
+		'sat_activity_id' => 'saturday activity',
+		'sun_activity_id' => 'sunday activity',
+	),
 
 );

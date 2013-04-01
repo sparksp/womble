@@ -10,7 +10,7 @@
     <div class="container primary-container">
       <img src="{{{ asset('assets/img/Womble.png') }}}">
 
-      {{ $content }}
+      {{ isset($content) ? $content : '' }}
     </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{{ asset('assets/js/bootstrap.min.js') }}}"></script>

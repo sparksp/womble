@@ -3,6 +3,16 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
+/**
+ * A user account.
+ *
+ * @property-read int $id unique identifier
+ * @property string name Familiar name
+ * @property string email E-mail address
+ * @property-write string password
+ * @property-read datetime created_at
+ * @property-read datetime updated_at
+ */
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**

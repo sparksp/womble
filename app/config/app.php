@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Europe/London',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'F6995034455D44C596C0676E02E12C3B',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return array(
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		// 'Illuminate\Html\HtmlServiceProvider',
 		'Illuminate\Foundation\Providers\KeyGeneratorServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
@@ -99,6 +99,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
+		'Womble\HtmlServiceProvider',
 
 	),
 
