@@ -6,6 +6,7 @@
  * @property-read int id Unique identifier
  * @property string name
  * @property string section
+ * @property-read string section_name
  * @property string contact_name
  * @property string contact_email
  * @property string contact_phone
@@ -59,6 +60,11 @@ class Group extends Eloquent {
 		return $this;
 	}
 
+	/**
+	 * Get the name of this group's section.
+	 * 
+	 * @return string
+	 */
 	public function getSectionNameAttribute()
 	{
 		return array_get(static::sections(), $this->section);
