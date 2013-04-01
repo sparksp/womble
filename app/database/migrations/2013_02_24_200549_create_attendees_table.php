@@ -17,11 +17,11 @@ class CreateAttendeesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name', 50);
-			$table->decimal('paid', 5, 2)->default(0.0);
+			$table->string('hash', 8);
+			$table->decimal('paid', 3, 2)->default(0.0);
 			$table->integer('group_id')->unsigned();
 			$table->integer('sat_activity_id')->unsigned();
 			$table->integer('sun_activity_id')->unsigned();
-			$table->integer('health_id')->unsigned();
 			$table->timestamps();
 		});
 	}

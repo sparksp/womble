@@ -20,6 +20,30 @@ class Attendee extends Eloquent {
 	public $fillable = ['name', 'sat_activity_id', 'sun_activity_id'];
 
 	/**
+	 * Create a new Attendee instance.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = array())
+	{
+		$this->setRandomHash();
+
+		parent::__construct($attributes);
+	}
+
+	/**
+	 * Generate a random hash and set it on the group.
+	 * 
+	 * @return  Attendee
+	 */
+	public function setRandomHash()
+	{
+		$this->hash = Str::random(8);
+
+		return $this;
+	}
+
+	/**
 	 * Belongs To: Group (Relationship)
 	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
