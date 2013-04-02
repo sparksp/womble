@@ -88,7 +88,7 @@ class Group extends Eloquent {
 		return [
 			self::SECTION_EXPLORERS => 'Explorers',
 			self::SECTION_NETWORK   => 'Network',
-			self::SECTION_LEADERS   => 'Leaders only',
+			self::SECTION_LEADERS   => 'Leaders/Instructors',
 		];
 	}
 

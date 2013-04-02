@@ -24,7 +24,7 @@ class ActivityTableSeeder extends Seeder {
 			'spaces' => 6,
 		],
 		[
-			'name' => 'None (Group Supporter)',
+			'name' => 'None (Leader/Instructor)',
 			'link' => '',
 			'spaces' => -1,
 		],
