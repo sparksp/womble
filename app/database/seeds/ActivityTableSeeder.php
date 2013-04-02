@@ -16,7 +16,7 @@ class ActivityTableSeeder extends Seeder {
 		[
 			'name' => 'Climbing',
 			'link' => '//womble.me.uk/?p=33',
-			'spaces' => 12,
+			'spaces' => 20,
 		],
 		[
 			'name' => 'Mountain Biking',
