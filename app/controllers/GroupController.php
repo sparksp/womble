@@ -25,7 +25,7 @@ class GroupController extends BaseController {
 
 		$group = $form->createGroup();
 
-		return Redirect::action('GroupController@show', [ $group->id, $group->hash ]);
+		return Redirect::action('GroupController@welcome', [ $group->id, $group->hash ]);
 	}
 
 	public function find()
@@ -48,6 +48,13 @@ class GroupController extends BaseController {
 	public function search()
 	{
 		$this->layout->content = View::make('group.search');
+	}
+
+	public function welcome($group, $hash)
+	{
+		$group->hashMatches($hash);
+
+		$this->layout->nest('content', 'group.welcome', compact('group'));
 	}
 
 	public function show($group, $hash = '')
