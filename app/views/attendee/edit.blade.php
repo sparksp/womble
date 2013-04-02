@@ -1,5 +1,7 @@
 
-<h1>{{{ $group->name }}} <small>{{{ $group->section_name }}}</small></h1>
+<div class="page-header">
+  <h1>{{{ $group->name }}} <small>{{{ $group->section_name }}}</small></h1>
+</div>
 
 {{ Form::model($attendee, ['action' => ['AttendeeController@update', $group->id, $group->hash, $attendee->id], 'method' => 'put', 'class' => 'form-horizontal']) }}
 

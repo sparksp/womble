@@ -1,6 +1,9 @@
 
-<h1>Womble 2013 <small>Bookings</small></h1>
-<hr>
+
+<div class="page-header">
+	<h1>Womble 2013 <small>Bookings</small></h1>
+</div>
+
 <div class="row">
 	<div class="span7">
 

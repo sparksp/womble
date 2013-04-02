@@ -1,4 +1,7 @@
-<h1>Register Your Group</h1>
+
+<div class="page-header">
+  <h1>Register Your Group</h1>
+</div>
 
 {{ Form::model($group, [ 'action' => 'GroupController@store', 'class' => 'form-horizontal' ]).Form::token() }}
 

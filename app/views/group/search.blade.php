@@ -1,5 +1,7 @@
 
-<h1>Lookup your group</h1>
+<div class="page-header">
+  <h1>Lookup your group</h1>
+</div>
 
 {{ Form::open(['action' => 'GroupController@find', 'class' => 'form-horizontal']) }}
 
