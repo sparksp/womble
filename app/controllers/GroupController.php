@@ -73,6 +73,28 @@ class GroupController extends BaseController {
 		$this->layout->content = $content;
 	}
 
+	public function edit($group, $hash)
+	{
+		$group->hashMatches($hash);
+
+		$this->layout->nest('content', 'group.edit', compact('group'));
+	}
+
+	public function update($group, $hash)
+	{
+		$group->hashMatches($hash);
+
+		$form = new GroupContactEditForm;
+
+		if ($form->invalid()) {
+			return Redirect::action('GroupController@edit', [$group->id, $group->hash])->withErrors($form->validator())->withInput();
+		}
+
+		$group = $form->updateGroup($group);
+
+		return Redirect::action('GroupController@show', [ $group->id, $group->hash ]);
+	}
+
 	public function index()
 	{
 		return Redirect::to('/');
