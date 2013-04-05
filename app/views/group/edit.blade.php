@@ -1,29 +1,9 @@
 
 <div class="page-header">
-  <h1>Register Your Group</h1>
+	<h1>{{{ $group->name }}} <small>{{{ $group->section_name }}}</small></h1>
 </div>
 
-{{ Form::model($group, [ 'action' => 'GroupController@store', 'class' => 'form-horizontal' ]).Form::token() }}
-
-  <fieldset>
-    <legend>Group Details</legend>
-
-    <div class="control-group{{ $errors->first('name', ' error') }}">
-      <label class="control-label" for="inputGroupName">Group Name</label>
-      <div class="controls">
-        {{ Form::text('name', null, [ 'id' => 'inputGroupName', 'placeholder' => 'Group Name', 'maxlength' => 50, 'required', 'autofocus' ]) }}
-        {{ $errors->first('name', '<span class="help-inline">:message</span>') }}
-      </div>
-    </div>
-
-    <div class="control-group{{ $errors->first('section', ' error') }}">
-      <label class="control-label" for="inputSection">Section</label>
-      <div class="controls">
-        {{ Form::select('section', [ null => 'Choose a Section' ] + $sections, null, [ 'id' => 'inputSection', 'required' ]) }}
-        {{ $errors->first('section', '<span class="help-inline">:message</span>') }}
-      </div>
-    </div>
-  </fieldset>
+{{ Form::model($group, [ 'action' => ['GroupController@update', $group->id, $group->hash], 'method' => 'patch'] ) }}
 
   <fieldset>
     <legend>Contact Details</legend>
@@ -55,8 +35,8 @@
   </fieldset>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Register</button>
-    <a href="{{ URL::action('HomeController@showWelcome') }}" class="btn">Cancel</a>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="{{ URL::action('GroupController@show', [$group->id, $group->hash]) }}" class="btn">Cancel</a>
   </div>
 
 {{ Form::close() }}
