@@ -40,7 +40,7 @@
       <label class="control-label" for="inputContactEmail">Contact Email</label>
       <div class="controls">
         {{ Form::email('contact_email', null, [ 'id' => 'inputContactEmail', 'placeholder' => 'Contact Email', 'maxlength' => 200, 'required' ]) }}
-        {{ $errors->first('contact_name', '<span class="help-inline">:message</span>') }}
+        {{ $errors->first('contact_email', '<span class="help-inline">:message</span>') }}
       </div>
     </div>
 
