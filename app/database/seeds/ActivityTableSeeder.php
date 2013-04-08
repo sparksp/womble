@@ -6,7 +6,7 @@ class ActivityTableSeeder extends Seeder {
 		[
 			'name' => 'Canoeing',
 			'link' => '//womble.me.uk/?p=14',
-			'spaces' => 12,
+			'spaces' => 16,
 		],
 		[
 			'name' => 'Caving',
@@ -21,7 +21,7 @@ class ActivityTableSeeder extends Seeder {
 		[
 			'name' => 'Mountain Biking',
 			'link' => '//womble.me.uk/?p=39',
-			'spaces' => 6,
+			'spaces' => 8,
 		],
 		[
 			'name' => 'None (Leader/Instructor)',
