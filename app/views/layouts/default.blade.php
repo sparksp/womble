@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container primary-container">
-      <img src="{{{ asset('assets/img/Womble.png') }}}">
+      <a href="http://womble.me.uk"><img src="{{{ asset('assets/img/Womble.png') }}}" alt="Womble"></a>
 
       {{ isset($content) ? $content : '' }}
     </div>
