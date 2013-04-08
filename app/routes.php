@@ -11,7 +11,25 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
+
+
+Route::model('group', 'Group');
+Route::model('attendee', 'Attendee');
+
+Route::get('groups/register', 'GroupController@create');
+Route::get('groups', 'GroupController@index');
+Route::post('groups', 'GroupController@store');
+Route::get('groups/find', 'GroupController@search');
+Route::post('groups/find', 'GroupController@find');
+Route::get('groups/{group}/{hash}', 'GroupController@show');
+Route::patch('groups/{group}/{hash}', 'GroupController@update');
+Route::get('groups/{group}/{hash}/welcome', 'GroupController@welcome');
+Route::get('groups/{group}/{hash}/edit', 'GroupController@edit');
+Route::get('groups/{group}/{hash}/attendees', 'AttendeeController@index');
+Route::post('groups/{group}/{hash}/attendees', 'AttendeeController@store');
+Route::get('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@show');
+Route::delete('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@destroy');
+Route::put('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@update');
+Route::get('groups/{group}/{hash}/attendees/{attendee}/remove', 'AttendeeController@remove');
+Route::get('groups/{group}/{hash}/attendees/{attendee}/edit', 'AttendeeController@edit');
