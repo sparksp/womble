@@ -33,3 +33,11 @@ Route::delete('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@
 Route::put('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@update');
 Route::get('groups/{group}/{hash}/attendees/{attendee}/remove', 'AttendeeController@remove');
 Route::get('groups/{group}/{hash}/attendees/{attendee}/edit', 'AttendeeController@edit');
+
+Group::created(function(Group $group)
+{
+	Mail::send(['emails.group.welcome', 'emails.group.welcome-text'], [], function($m) use ($group)
+	{
+		$m->to($group->contact_email, $group->contact_name)->subject('Welcome to Womble 2013');
+	});
+});
