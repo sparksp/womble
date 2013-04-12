@@ -27,6 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('womble.dev'),
+	'staging' => array('attend.womble.me.uk'),
 
 ));
 
