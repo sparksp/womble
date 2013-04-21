@@ -64,7 +64,7 @@ return array(
 	"url"              => "The :attribute format is invalid.",
 
 
-	"spaces"          => "No space! Choose another :attribute.",
+	"spaces"           => "No space! Choose another :attribute.",
 
 
 	/*
