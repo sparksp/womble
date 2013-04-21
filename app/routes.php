@@ -34,6 +34,11 @@ Route::put('groups/{group}/{hash}/attendees/{attendee}', 'AttendeeController@upd
 Route::get('groups/{group}/{hash}/attendees/{attendee}/remove', 'AttendeeController@remove');
 Route::get('groups/{group}/{hash}/attendees/{attendee}/edit', 'AttendeeController@edit');
 
+Route::get('health/{attendee}/{hash}', 'HealthController@show');
+Route::post('health/{attendee}/{hash}', 'HealthController@store');
+Route::patch('health/{attendee}/{hash}', 'HealthController@update');
+Route::get('health/{attendee}/{hash}/start', 'HealthController@create');
+
 Group::created(function(Group $group)
 {
 	Mail::send(['emails.group.welcome', 'emails.group.welcome-text'], [], function($m) use ($group)
