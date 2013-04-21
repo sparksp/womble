@@ -14,6 +14,10 @@
 
 {{ $attendee_list }}
 
+<p class="text-right">
+	Press <i class="icon icon-plus"></i> plus to save each attendee.  Then you'll see a <i class="icon icon-cog"></i> cog next to each saved attendee.
+</p>
+
 <p class="clearfix">
 	<a href="{{ URL::action('HomeController@showWelcome') }}" class="btn btn-success pull-right">Finished</a>
 </p>
