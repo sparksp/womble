@@ -97,6 +97,15 @@ return array(
 	'attributes' => array(
 		'sat_activity_id' => 'saturday activity',
 		'sun_activity_id' => 'sunday activity',
+		'email' => 'email address',
+		'crb_number' => 'CRB number',
+		'crb_issue_date' => 'CRB issue date',
+		'is_leader' => 'appointed leader',
+		'medical_illness' => 'illness and disability',
+		'medical_allergy' => 'allergy',
+		'medical_dietary' => 'dietary',
+		'medical_tetnus_date' => 'date of last tetnus',
+		'medical_contact_lens' => 'contact lens',
 	),
 
 );

@@ -73,15 +73,16 @@ class Attendee extends Eloquent {
 	 * @return Illuminate\Database\Eloquent\Relations\HasOne
 	 */
 	public function health() {
-		return $this->hasOne('Health');
+		return $this->belongsTo('Health');
 	}
 
 	/**
-	 * Belongs To: User (Relationship)
-	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * Has this attendee started a health form yet?
+	 * @return boolean
 	 */
-	public function user() {
-		return $this->belongsTo('User');
+	public function hasHealth()
+	{
+		return $this->health_id > 0;
 	}
 
 	/**
@@ -94,6 +95,21 @@ class Attendee extends Eloquent {
 		if ($group->id != $this->group_id) {
 			throw new GroupMismatchException;
 		}
+	}
+
+	/**
+	 * Check that the given hash matches this Group's hash.
+	 * @param  string $hash
+	 * @throws  GroupHashMismatchException If the hashes do not match
+	 * @return  Group
+	 */
+	public function hashMatches($hash)
+	{
+		if ($hash != $this->hash) {
+			throw new HashMismatchException;
+		}
+
+		return $this;
 	}
 
 }
