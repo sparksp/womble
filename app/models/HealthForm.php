@@ -13,6 +13,8 @@ class HealthForm extends BaseForm
         'email' => 'required|email',
         'gender' => 'required|in:female,male',
         'date_of_birth' => 'required',
+        // 'height' => '',
+        // 'weight' => '',
         'address' => 'required',
         'postcode' => 'required|min:5|max:10',
         'telephone' => 'required',
@@ -82,7 +84,7 @@ class HealthForm extends BaseForm
     {
         if (is_null($this->attendee))
         {
-            throw new RuntimeException('Attendee must be set');            
+            throw new RuntimeException('Attendee must be set');
         }
 
         if ($this->attendee->health->adult)

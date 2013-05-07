@@ -57,6 +57,20 @@
         </div>
     </div>
 
+    <div class="control-group{{ $errors->first('height', ' error') }}">
+       {{ Form::label('height', Lang::get('health.height'), [ 'class' => 'control-label' ] ) }}
+        <div class="controls"><div class="input-append">
+            {{ Form::text('height', null, [ 'class' => 'input-mini' ]) }}<span class="add-on">{{ Lang::get('health.cm') }}</span>
+        </div></div>
+    </div>
+
+    <div class="control-group{{ $errors->first('weight', ' error') }}">
+        {{ Form::label('weight', Lang::get('health.weight'), [ 'class' => 'control-label' ] ) }}
+        <div class="controls"><div class="input-append">
+            {{ Form::text('weight', null, [ 'class' => 'input-mini' ]) }}<span class="add-on">{{ Lang::get('health.kg') }}</span>
+        </div></div>
+    </div>
+
     <div class="control-group{{ $errors->first('address', ' error').$errors->first('postcode', ' error') }}">
         {{ Form::label('address', Lang::get('health.address'), [ 'class' => 'control-label'] ) }}
         <div class="controls">
