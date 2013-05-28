@@ -2,6 +2,11 @@
 
 return array(
 
+  /*
+   * Enable registrations?
+   */
+  'registerable' => false,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode

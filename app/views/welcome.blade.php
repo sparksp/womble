@@ -11,7 +11,11 @@
 
 	</div>
 	<div class="offset1 span4">
+  @if (Config::get('app.registerable', true))
 		<label for="inputGroupContactEmail"><h2>Already registered?</h2></label>
+  @else
+    <label for="inputGroupContactEmail"><h2>Group Sign In</h2></label>
+  @endif
 
 		{{ Form::open(['action' => 'GroupController@find']) }}
 		{{ Form::email('contact_email', null, ['placeholder' => 'Group Contact Email', 'id' => 'inputGroupContactEmail', 'class' => 'span4', 'required']) }}
@@ -22,9 +26,10 @@
 
 		{{ Form::close() }}
 
+  @if (Config::get('app.registerable', true))
 		<h2>Register today!</h2>
-
 		<a href="{{ URL::action('GroupController@create') }}" class="btn btn-block btn-large btn-success">Register your group</a>
+  @endif
 
 	</div>
 </div>

@@ -5,6 +5,13 @@ use Illuminate\Support\MessageBag;
 
 class GroupController extends BaseController {
 
+  public function __construct()
+  {
+    $this->beforeFilter('registerable', [
+      'except' => ['index', 'show'],
+    ]);
+  }
+
 	public function create()
 	{
 		$group = new Group;

@@ -1,10 +1,12 @@
 <h2>Attendees</h2>
+@if (Config::get('app.registerable', true))
 <p class="lead">Please list <b>all</b> of your group's attendees below, even if they are not taking part in any activities.</p>
 <?php
 	$messages = ["If they're not on the list then they won't be fed!", "Don't forget to include yourself if you're coming too!"];
 	$message = $messages[array_rand($messages)];
 ?>
 <p>{{{ $message }}}</p>
+@endif
 
 <table class="table">
 	<thead>
@@ -12,7 +14,7 @@
 			<th>Name</th>
 			<th>Saturday</th>
 			<th>Sunday</th>
-			<th></th>
+			<th width="5%"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,17 +25,20 @@
 			<td>{{{ $attendee->sat_activity->name }}}</td>
 			<td>{{{ $attendee->sun_activity->name }}}</td>
 			<td class="btn-group">
+      @if (Config::get('app.registerable', true))
 				<button class="btn dropdown-toggle" data-toggle="dropdown">
 					<span class="icon-cog"></span>
 				</button>
 				<ul class="dropdown-menu">
 					<li><a href="{{ URL::action('AttendeeController@edit', [$group->id, $group->hash, $attendee->id]) }}"><i class="icon-pencil"></i> Change attendee</a></li>
 					<li><a href="{{ URL::action('AttendeeController@remove', [$group->id, $group->hash, $attendee->id]) }}" class="text-warning"><i class="icon-remove"></i> Remove attendee</a></li>
-				</ul>
+        </ul>
+      @endif
 			</td>
 		</tr>
 	@endforeach
 @endif
+@if (Config::get('app.registerable', true))
 	{{ Form::open(['action' => ['AttendeeController@store', $group->id, $group->hash] ]) }}
 		<tr class="{{ $errors->count() ? 'error' : '' }}">
 			<td class="control-group {{ $errors->first('name', 'error') }}">
@@ -45,5 +50,6 @@
 			<td><button class="btn btn-primary" title="Add attendee"><i class="icon-plus icon-white"></i></button></td>
 		</tr>
 	{{ Form::close() }}
+@endif
 	</tbody>
 </table>
