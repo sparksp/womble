@@ -32,7 +32,7 @@ class HealthController extends BaseController {
 
 		if ($attendee->hasHealth())
 		{
-			return Redirect::action('HealthController@edit', [$attendee->id, $hash]);
+			return Redirect::action('HealthController@edit', [ $attendee->id, $hash ]);
 		}
 
 		$health = new Health;
@@ -54,7 +54,7 @@ class HealthController extends BaseController {
 		$form->updateHealth($attendee);
 
 		/** @todo thank-you page */
-		return Redirect::action('HealthController@show', [ $attendee->id, $attendee->hash ]);
+		return Redirect::action('HealthController@thankyou', [ $attendee->id, $attendee->hash ]);
 	}
 
 	/**
@@ -70,10 +70,21 @@ class HealthController extends BaseController {
 		if (!$attendee->hasHealth())
 		{
 			// If they've not started a health form yet we will send them to the start screen
-			return Redirect::action('HealthController@create', [$attendee->id, $hash]);
+			return Redirect::action('HealthController@create', [ $attendee->id, $hash ]);
 		}
 
 		$this->layout->nest('content', 'health.form', compact('attendee'));
+	}
+
+	/**
+	 * Thank-you screen after completing the health form.
+	 * @param   Attendee  $attendee
+	 * @param   string    $hash
+	 * @return  mixed
+	 */
+	public function thankyou(Attendee $attendee, $hash)
+	{
+		$this->layout->nest('content', 'health.thankyou', compact('attendee'));
 	}
 
 }

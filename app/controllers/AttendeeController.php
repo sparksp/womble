@@ -2,6 +2,13 @@
 
 class AttendeeController extends BaseController {
 
+  public function __construct()
+  {
+    $this->beforeFilter('registerable', [
+      'except' => ['index', 'show'],
+    ]);
+  }
+
 	/**
 	 * Display a listing of the resource.
 	 *

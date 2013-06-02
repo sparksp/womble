@@ -81,4 +81,12 @@ return array(
     'submit' => 'Submit',
     'oops' => 'Oops!',
     'please_try_again' => 'Please review the errors below and try again.',
+
+
+    'thankyou' => 'Thank-you for completing your health form.',
+    'what_next' => 'What Next?',
+    'what_next_details' => 'Please bring a completed, paper health form with you to the event.',
+    'download_docx' => 'Download Health Form (Word)',
+    'download_pdf' => 'Download Health Form (PDF)',
+
 );

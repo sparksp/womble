@@ -78,3 +78,13 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('registerable', function()
+{
+  if (!Config::get('app.registerable', true))
+  {
+    App::abort(404);
+  }
+});
+
