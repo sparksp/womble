@@ -59,4 +59,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	/**
+	 * Is this user an adult?
+	 * 
+	 * @return boolean
+	 */
+	public function getAdultAttribute()
+	{
+		if ($this->health) return $this->health->adult;
+		return false;
+	}
+
 }

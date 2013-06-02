@@ -38,6 +38,7 @@ Route::get('health/{attendee}/{hash}', 'HealthController@show');
 Route::post('health/{attendee}/{hash}', 'HealthController@store');
 Route::patch('health/{attendee}/{hash}', 'HealthController@update');
 Route::get('health/{attendee}/{hash}/start', 'HealthController@create');
+Route::get('health/{attendee}/{hash}/thankyou', 'HealthController@thankyou');
 
 Group::created(function(Group $group)
 {
