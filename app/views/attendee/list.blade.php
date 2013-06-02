@@ -14,27 +14,40 @@
 			<th>Name</th>
 			<th>Saturday</th>
 			<th>Sunday</th>
+			<th>Health Form Link</th>
+			@if (Config::get('app.registerable', true))
 			<th width="5%"></th>
+			@endif
 		</tr>
 	</thead>
 	<tbody>
 @if (count($attendees))
 	@foreach ($attendees as $attendee)
 		<tr>
-			<td>{{{ $attendee->name }}}</td>
+			<td><strong>{{{ $attendee->name }}}</strong></td>
 			<td>{{{ $attendee->sat_activity->name }}}</td>
 			<td>{{{ $attendee->sun_activity->name }}}</td>
+			<td>
+				{{ Form::text(
+					'health-'.$attendee->id,
+					URL::action('HealthController@show', [$attendee->id, $attendee->hash]),
+					[
+						'class' => 'input-xlarge', 'readonly' => 'readonly',
+						'style' => 'width: 23em', 'onclick' => 'this.select()'
+					]
+				) }}
+			</td>
+			@if (Config::get('app.registerable', true))
 			<td class="btn-group">
-      @if (Config::get('app.registerable', true))
 				<button class="btn dropdown-toggle" data-toggle="dropdown">
 					<span class="icon-cog"></span>
 				</button>
 				<ul class="dropdown-menu">
 					<li><a href="{{ URL::action('AttendeeController@edit', [$group->id, $group->hash, $attendee->id]) }}"><i class="icon-pencil"></i> Change attendee</a></li>
 					<li><a href="{{ URL::action('AttendeeController@remove', [$group->id, $group->hash, $attendee->id]) }}" class="text-warning"><i class="icon-remove"></i> Remove attendee</a></li>
-        </ul>
-      @endif
+				</ul>
 			</td>
+			@endif
 		</tr>
 	@endforeach
 @endif
