@@ -12,7 +12,7 @@
       <div class="control-group{{ $errors->first('date_of_birth', ' error') }}">
         {{ Form::label('date_of_birth', Lang::get('health.date_of_birth'), [ 'class' => 'control-label'] ) }}
         <div class="controls">
-          <div class="input-append date" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-enddate="1999-12-31">
+          <div class="input-append date" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-enddate="{{ date('Y-m-d') }}">
             {{ Form::text('date_of_birth', null, [ 'placeholder' => 'YYYY-MM-DD', 'class' => 'input-small', 'readonly', 'required' ]) }}<span class="add-on"><i class="icon-th"></i></span>
           </div>
           {{ $errors->first('date_of_birth', '<span class="help-inline">:message</span>') }}
